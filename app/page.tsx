@@ -32,6 +32,7 @@ const Container = styled('div')`
 const textFieldProps = {
   variant: 'filled' as const,
   multiline: true,
+  spellCheck: false,
   minRows: 6,
   maxRows: 10,
 };
@@ -184,7 +185,7 @@ const HomePage: FunctionComponent = () => {
               {...textFieldProps}
               value={hebrew}
               id="hebTextField"
-              inputProps={{ style: { ...textFieldStyle }, spellCheck: false }}
+              inputProps={{ style: textFieldStyle }}
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
                 setHebrew(event.target.value)
               }
