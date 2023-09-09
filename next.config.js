@@ -1,4 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  output: 'export',
+  reactStrictMode: true,
+  swcMinify: true,
 
-module.exports = nextConfig
+  images: {
+    remotePatterns: [],
+  },
+};
+
+module.exports = nextConfig;
