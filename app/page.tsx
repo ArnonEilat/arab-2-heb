@@ -29,7 +29,8 @@ const Container = styled('div')`
   align-items: center;
 `;
 
-const isSmallScreen = window.matchMedia('(max-width: 426px)');
+const isSmallScreen =
+  typeof window !== 'undefined' && window.matchMedia('(max-width: 426px)');
 
 const textFieldProps = {
   variant: 'filled' as const,
