@@ -29,6 +29,8 @@ const Container = styled('div')`
   align-items: center;
 `;
 
+const isSmallScreen = window.matchMedia('(max-width: 426px)');
+
 const textFieldProps = {
   variant: 'filled' as const,
   multiline: true,
@@ -100,7 +102,11 @@ const HomePage: FunctionComponent = () => {
   const matches = useMediaQuery(theme.breakpoints.down('sm'));
   const xsMatches = useMediaQuery(theme.breakpoints.down(426));
 
-  const textFieldStyle = { ...baseTextFieldStyle, fontSize };
+  const textFieldStyle = {
+    ...baseTextFieldStyle,
+    fontSize,
+    ...(isSmallScreen ? { height: '250px' } : {}),
+  };
 
   return (
     <Container>
@@ -121,14 +127,17 @@ const HomePage: FunctionComponent = () => {
                 תרגום
               </Button>
 
-              <Button href={`#`} disabled={!supported} onClick={tts}>
-                {speaking ? (
-                  <StopIcon sx={{ mr: 1 }} />
-                ) : (
-                  <VolumeUpIcon sx={{ mr: 1 }} />
-                )}
-                {speaking ? 'הפסק' : 'דיבור'}
-              </Button>
+              {!xsMatches && (
+                <Button href={`#`} disabled={!supported} onClick={tts}>
+                  {speaking ? (
+                    <StopIcon sx={{ mr: 1 }} />
+                  ) : (
+                    <VolumeUpIcon sx={{ mr: 1 }} />
+                  )}
+                  {speaking ? 'הפסק' : 'דיבור'}
+                </Button>
+              )}
+
               <Button
                 href={`#`}
                 onClick={async () => {

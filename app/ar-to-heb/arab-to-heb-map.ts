@@ -93,6 +93,7 @@ export const arabToHebMap: ArabToHebMap = {
   // '\u0640': '_', // tatwil
   '\u0640': '', // remove tatwil
 
+  ڤ: 'ב',
   // others
   ة: 'ה', // ta marbuta
   '؟': '?', // ta marbuta
